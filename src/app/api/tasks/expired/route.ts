@@ -11,7 +11,7 @@ export const GET = async () => {
     })
     .replace(/\//g, "-");
   try {
-    await connectDb;
+    await connectDb();
     const expiredTasks: TaskDocument[] = await TaskModel.find({
       isCompleted: false,
       dueDate: { $lt: currentDate },
